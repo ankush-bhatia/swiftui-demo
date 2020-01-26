@@ -9,6 +9,9 @@
 import SwiftUI
 
 struct ContentView: View {
+
+    // var data: [UserListViewModel] = []
+
     var body: some View {
         Text("Hello, World!")
     }
