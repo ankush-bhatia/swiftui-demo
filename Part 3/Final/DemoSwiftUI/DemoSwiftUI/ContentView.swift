@@ -9,13 +9,28 @@
 import SwiftUI
 
 struct ContentView: View {
+
+    var data: [UserListViewModel] = []
+
     var body: some View {
-        Text("Hello, World!")
+        NavigationView {
+            List(data, rowContent: { viewModel in
+                UserListItemView(viewModel: viewModel)
+                    .frame(height: 100, alignment: .leading)
+            })
+                .navigationBarTitle(Text("Users"))
+        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Group {
+            ContentView(data: UserListViewModel.data())
+                .environment(\.colorScheme, .dark)
+
+            ContentView(data: UserListViewModel.data())
+            .environment(\.colorScheme, .light)
+        }
     }
 }
